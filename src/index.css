@@ -899,6 +899,7 @@ body {
 .Perfil__separador {
   border-bottom-width: 1px;
   margin-bottom: 3rem;
+  margin-top: 1rem;
 }
 .Nav {
   border-bottom-width: 1px;
