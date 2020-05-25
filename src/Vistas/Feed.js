@@ -4,6 +4,8 @@ import Axios from "axios";
 import Loading from "../Components/Loading";
 import { Link } from "react-router-dom";
 import Post from "../Components/Post";
+import { useUsuario } from "../Context/usuario-context";
+
 
 async function cargarPost(fechaDelUltimoPost) {
   const query = fechaDelUltimoPost ? `?fecha=${fechaDelUltimoPost}` : "";
@@ -14,7 +16,8 @@ async function cargarPost(fechaDelUltimoPost) {
 
 const NUMERO_DE_POST_POR_LLAMADA = 3;
 
-export default function Feed({ mostrarError, usuario }) {
+export default function Feed({ mostrarError }) {
+  const { usuario } = useUsuario();
   const [posts, setPosts] = useState([]);
   const [cargandoPostsIniciales, setCargandoPostsIniciales] = useState(true);
   const [cargandoMasPosts, setCargandoMasPosts] = useState(false);

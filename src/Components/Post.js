@@ -4,10 +4,11 @@ import Avatar from "./Avatar";
 import BotonLike from "./BotonLike";
 import Comentar from "./Comentar";
 import { toggleLike, comentar } from "../Helpers/post-helpers";
+import { useUsuario } from "../Context/usuario-context";
 
-export default function Post({ post, actualizarPost, mostrarError, usuario}) {
+export default function Post({ post, actualizarPost, mostrarError,}) {
+    const { usuario } = useUsuario();
     const [enviandoLike, setEnviandoLike] = useState(false);
-
     const {
         numLikes,
         numComentarios,
@@ -85,7 +86,7 @@ function Comentarios({comentarios}) {
 
     return comentarios.map((comentario) => {
         return (
-            <li key={comentario.id}>
+            <li key={comentario._id}>
                 <Link to={`/perfil/${comentario.usuario.username}`}>
                     <b>{comentario.usuario.username + ' '}</b>
                 </Link>
